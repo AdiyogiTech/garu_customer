@@ -1,0 +1,82 @@
+buildscript {
+    ext.kotlin_version = '2.1.20'  // Updated to latest stable
+    ext {
+        compileSdkVersion = 36
+        targetSdkVersion = 36
+        minSdkVersion = 24
+    }
+
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.6.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.4.2'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+// Some older/third-party Flutter plugins (e.g. certain geolocator versions)
+// expect a `flutter` property inside the Android Gradle `android {}` block
+// and access it as `flutter.compileSdkVersion`, etc. With newer Flutter/AGP
+// plugin wiring, that property may not exist for library modules unless we
+// provide it.
+subprojects { p ->
+    p.plugins.withId("com.android.library") {
+        // Expose values via `android.flutter.*` so `flutter.*` resolves inside
+        // the `android {}` closure of Android library subprojects.
+        p.android.ext.flutter = [
+                compileSdkVersion: rootProject.ext.compileSdkVersion,
+                targetSdkVersion : rootProject.ext.targetSdkVersion,
+                minSdkVersion    : rootProject.ext.minSdkVersion,
+        ]
+    }
+}
+
+
+// Force Java/Kotlin 21 on all modules (plugins like device_info_plus may ship with 17).
+subprojects { subproject ->
+    subproject.afterEvaluate {
+        if (subproject.plugins.hasPlugin("com.android.library") ||
+                subproject.plugins.hasPlugin("com.android.application")) {
+            subproject.android.compileOptions {
+                sourceCompatibility = JavaVersion.VERSION_21
+                targetCompatibility = JavaVersion.VERSION_21
+            }
+        }
+        subproject.tasks.withType(JavaCompile).configureEach {
+            sourceCompatibility = JavaVersion.VERSION_21
+            targetCompatibility = JavaVersion.VERSION_21
+        }
+        subproject.tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+            kotlinOptions {
+                jvmTarget = "21"
+            }
+        }
+    }
+}
+
+rootProject.buildDir = "${rootProject.projectDir}/../build"
+
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+    project.evaluationDependsOn(":app")
+}
+
+subprojects {
+    project.evaluationDependsOn(":app")
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}

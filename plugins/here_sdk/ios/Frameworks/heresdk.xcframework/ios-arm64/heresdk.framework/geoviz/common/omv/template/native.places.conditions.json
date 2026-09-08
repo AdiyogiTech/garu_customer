@@ -1,0 +1,1 @@
+{"definitions": {"Get.Kind": ["get", "$localized-kind"], "Should.Hide.City": ["!has", "$localized-kind"]}}

@@ -1,0 +1,22 @@
+-- Merging decision tree log ---
+uses-feature#0x00030000
+INJECTED from D:\meenal_project\garu_customer\plugins\here_sdk\android\src\main\AndroidManifest.xml:4:5-70
+	android:glEsVersion
+		INJECTED from D:\meenal_project\garu_customer\plugins\here_sdk\android\src\main\AndroidManifest.xml
+		ADDED from D:\meenal_project\garu_customer\plugins\here_sdk\android\src\main\AndroidManifest.xml:4:19-67
+manifest
+ADDED from D:\meenal_project\garu_customer\plugins\here_sdk\android\src\main\AndroidManifest.xml:1:1-6:12
+INJECTED from D:\meenal_project\garu_customer\plugins\here_sdk\android\src\main\AndroidManifest.xml:1:1-6:12
+	package
+		ADDED from D:\meenal_project\garu_customer\plugins\here_sdk\android\src\main\AndroidManifest.xml:2:3-30
+		INJECTED from D:\meenal_project\garu_customer\plugins\here_sdk\android\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\meenal_project\garu_customer\plugins\here_sdk\android\src\main\AndroidManifest.xml:1:11-69
+uses-sdk
+INJECTED from D:\meenal_project\garu_customer\plugins\here_sdk\android\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\meenal_project\garu_customer\plugins\here_sdk\android\src\main\AndroidManifest.xml
+INJECTED from D:\meenal_project\garu_customer\plugins\here_sdk\android\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from D:\meenal_project\garu_customer\plugins\here_sdk\android\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\meenal_project\garu_customer\plugins\here_sdk\android\src\main\AndroidManifest.xml

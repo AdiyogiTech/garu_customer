@@ -1,0 +1,108 @@
+plugins {
+    id "com.android.application"
+    id "org.jetbrains.kotlin.android"
+    id "dev.flutter.flutter-gradle-plugin"
+    id "com.google.gms.google-services"
+}
+
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader("UTF-8") { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterVersionCode = localProperties.getProperty("flutter.versionCode")
+if (flutterVersionCode == null) {
+    flutterVersionCode = "1"
+}
+
+def flutterVersionName = localProperties.getProperty("flutter.versionName")
+if (flutterVersionName == null) {
+    flutterVersionName = "1.0"
+}
+
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
+android {
+    namespace = "com.garu.customer"
+    compileSdk = 36  // Required by screen_protector
+    ndkVersion = "26.1.10909125"
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
+        coreLibraryDesugaringEnabled true
+    }
+
+    kotlinOptions {
+        jvmTarget = '21'
+    }
+
+    defaultConfig {
+        applicationId = "com.garu.customer"
+        minSdk = 24  // Required by here_sdk
+        targetSdk = 36  // Match compileSdk
+        versionCode = flutterVersionCode.toInteger()
+        versionName = flutterVersionName
+        multiDexEnabled true
+    }
+
+    buildFeatures {
+        buildConfig = true
+    }
+
+    signingConfigs {
+        release {
+            keyAlias = keystoreProperties['keyAlias']
+            keyPassword = keystoreProperties['keyPassword']
+            storeFile = keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+            storePassword = keystoreProperties['storePassword']
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig = signingConfigs.release
+            shrinkResources = false
+            minifyEnabled = false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            // Avoid Windows Gradle MD5 failures on stripReleaseDebugSymbols /
+            // extractReleaseNativeSymbolTables (temp .so.sym files become unreadable).
+            ndk {
+                debugSymbolLevel 'NONE'
+            }
+        }
+        debug {
+            signingConfig = signingConfigs.debug
+            debuggable = true
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
+
+dependencies {
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.2'  // Updated version
+
+    // AndroidX Core
+    implementation 'androidx.core:core-ktx:1.13.1'  // Updated
+    implementation 'androidx.appcompat:appcompat:1.7.0'  // Updated
+    implementation 'androidx.multidex:multidex:2.0.1'  // Added for better multi-dex support
+
+    // Google Maps & Location
+    implementation 'com.google.android.gms:play-services-maps:19.0.0'
+    implementation 'com.google.android.gms:play-services-location:21.3.0'
+    implementation 'com.google.android.gms:play-services-places:17.1.0'
+    implementation 'com.google.maps.android:android-maps-utils:3.8.2'
+
+    // Kotlin
+//    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.24"  // Explicit Kotlin version
+}

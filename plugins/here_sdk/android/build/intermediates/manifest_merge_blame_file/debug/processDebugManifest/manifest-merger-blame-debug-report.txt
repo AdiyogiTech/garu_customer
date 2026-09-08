@@ -1,0 +1,10 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.here.here_sdk" >
+4
+5    <uses-sdk android:minSdkVersion="24" />
+6
+7    <uses-feature android:glEsVersion="0x00030000" />
+7-->D:\meenal_project\garu_customer\plugins\here_sdk\android\src\main\AndroidManifest.xml:4:19-67
+8
+9</manifest>

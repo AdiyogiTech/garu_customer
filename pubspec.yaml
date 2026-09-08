@@ -1,0 +1,115 @@
+name: garu_customer
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+10
+
+environment:
+  sdk: '>=3.4.4 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  here_sdk:
+    path: plugins/here_sdk
+
+  # UI & Core
+  cupertino_icons: ^1.0.8
+  get: ^4.6.6
+  flutter_svg: ^2.0.10+1
+  shimmer: ^3.0.0
+  flutter_rating_bar: ^4.0.1
+  dotted_border: ^2.1.0
+
+  # Firebase
+  firebase_core: ^3.8.0
+  firebase_messaging: ^15.1.3
+
+  # Local Notifications
+  flutter_local_notifications: ^17.2.3
+
+  # Maps & Location
+  google_maps_flutter: ^2.9.0
+  geolocator: ^13.0.1
+  geocoding: ^3.0.0
+  map_picker: ^0.0.3
+  permission_handler: ^11.3.1
+
+
+  # Networking
+  http: ^1.2.2
+  dio: ^5.7.0
+  connectivity_plus: ^6.1.0
+
+  # Storage
+  shared_preferences: ^2.3.2
+  path_provider: ^2.1.4
+  flutter_image_compress: ^2.3.0
+
+  # File Handling
+  file_picker: ^8.1.4
+  image_picker: ^1.1.2
+  open_file: ^3.3.2
+  flutter_pdfview: ^1.3.4
+
+  # HTML & Web
+  flutter_widget_from_html: ^0.15.2
+  flutter_widget_from_html_core: ^0.15.2
+  flutter_html: ^3.0.0-beta.2
+  webview_flutter: ^4.8.0
+
+  # Payment
+  razorpay_flutter: ^1.3.7
+
+  # Utilities
+  intl: ^0.19.0
+  url_launcher: ^6.3.1
+  share_plus: ^10.1.4
+  device_info_plus: ^11.0.0
+  package_info_plus: ^8.0.2
+  store_redirect: ^2.0.2
+  flutter_dotenv: ^5.1.0
+  circular_countdown_timer: ^0.2.3
+  timeline_tile: ^2.0.0
+  screen_protector: ^1.4.2
+  carousel_slider: ^5.0.0
+  flutter_downloader: ^1.11.6
+  # Image Processing
+  crop_your_image: ^1.1.0
+  media_store_plus: ^0.1.3
+
+  app_links: ^3.5.0
+  video_player: ^2.9.5
+  chewie: ^1.10.0
+  smooth_page_indicator: ^1.2.1
+  readmore: ^2.2.0
+  dropdown_search: ^6.0.1
+  fluttertoast: ^9.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/svg/
+    - .env.dev
+    - .env.prod
+
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700

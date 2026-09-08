@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "264478029261",
+    "project_id": "garu-a5813",
+    "storage_bucket": "garu-a5813.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:264478029261:android:18d760e0a91187795e8084",
+        "android_client_info": {
+          "package_name": "com.garu.customer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEEdHp3zKVj2VqCSZB3ZpBJLMk3AocSJU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
